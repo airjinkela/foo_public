@@ -27,4 +27,8 @@ jobs:
         ssh-private-key: |
           ${{ secrets.SSH_PRIVATE_KEY }}
 
-    - run: git clone git@github.com:airjinkela/foo_private.git
+    - name: run git
+      run: git clone git@github.com:airjinkela/foo_private.git
+
+    - name: run ls
+      run: ls ./
