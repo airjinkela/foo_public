@@ -1,0 +1,31 @@
+name: Ruijie Openwrt Release
+
+on:
+  workflow_dispatch:
+
+env:
+  UPLOAD_BIN_DIR: true
+  UPLOAD_FIRMWARE: true
+  UPLOAD_RELEASE: true
+  CACHE_TOOLCHAIN: true
+  TZ: Asia/Shanghai
+
+jobs:
+
+  test:
+    name: Compile & Cache Toolchain
+    runs-on: ubuntu-22.04
+    steps:
+
+    - name: Checkout Repository
+      id: checkout
+      uses: actions/checkout@main
+
+    - name: download private Repository
+      id: dl-rep
+      uses: webfactory/ssh-agent@0.7.0
+      with:
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - run: git clone git@github.com:airjinkela/foo_private.git
