@@ -23,7 +23,7 @@ jobs:
 
     - name: download private Repository
       id: dl-rep
-      uses: webfactory/ssh-agent@0.7.0
+      uses: webfactory/ssh-agent@0.9.1
       with:
         ssh-private-key: |
           ${{ secrets.SSH_PRIVATE_KEY }}
